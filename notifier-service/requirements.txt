@@ -1,0 +1,9 @@
+# Requerimientos comunes para todos los microservicios
+fastapi
+uvicorn[standard]
+pydantic
+httpx
+python-jose
+scikit-learn
+pytest
+email-validator

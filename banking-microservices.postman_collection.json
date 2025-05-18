@@ -1,0 +1,420 @@
+{
+  "info": {
+    "name": "Banking Microservices Collection",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "API Gateway",
+      "item": [
+        {
+          "name": "Health Check",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8000/health",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "health"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Validate Loan (via Gateway)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8000/loans/validate",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "loans",
+                "validate"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customer_id\": \"CUST-0001\",\n  \"amount\": 10000,\n  \"term_months\": 12\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Accounts Service",
+      "item": [
+        {
+          "name": "Health Check",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8002/health",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8002",
+              "path": [
+                "health"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create Account",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8002/accounts/",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8002",
+              "path": [
+                "accounts",
+                ""
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"ACC-1001\",\n  \"owner\": \"Juan Perez\",\n  \"balance\": 1500\n}"
+            }
+          }
+        },
+        {
+          "name": "Get Account",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8002/accounts/ACC-1001",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8002",
+              "path": [
+                "accounts",
+                "ACC-1001"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Loans Service",
+      "item": [
+        {
+          "name": "Health Check",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8001/health",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8001",
+              "path": [
+                "health"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Validate Loan",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8001/loans/validate",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8001",
+              "path": [
+                "loans",
+                "validate"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customer_id\": \"CUST-0001\",\n  \"amount\": 10000,\n  \"term_months\": 12\n}"
+            }
+          }
+        },
+        {
+          "name": "Calculate Interest",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8001/loans/calculate-interest",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8001",
+              "path": [
+                "loans",
+                "calculate-interest"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customer_id\": \"CUST-0001\",\n  \"amount\": 10000,\n  \"term_months\": 12\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Payments Service",
+      "item": [
+        {
+          "name": "Health Check",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8003/health",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8003",
+              "path": [
+                "health"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Pay Bill",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8003/payments/bill",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8003",
+              "path": [
+                "payments",
+                "bill"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"account_id\": \"ACC-1001\",\n  \"biller\": \"Electric Company\",\n  \"amount\": 100\n}"
+            }
+          }
+        },
+        {
+          "name": "Transfer",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8003/payments/transfer",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8003",
+              "path": [
+                "payments",
+                "transfer"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"from_account\": \"ACC-1001\",\n  \"to_account\": \"ACC-1002\",\n  \"amount\": 50\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Notifier Service",
+      "item": [
+        {
+          "name": "Health Check",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8005/health",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8005",
+              "path": [
+                "health"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Notify Email",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8005/notify/email",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8005",
+              "path": [
+                "notify",
+                "email"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"to_email\": \"test@example.com\",\n  \"subject\": \"Prueba\",\n  \"message\": \"Hola desde Notifier\"\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Risk Service",
+      "item": [
+        {
+          "name": "Health Check",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8004/health",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8004",
+              "path": [
+                "health"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Score",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8004/score/CUST-0001",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8004",
+              "path": [
+                "score",
+                "CUST-0001"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
